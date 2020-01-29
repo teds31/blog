@@ -1,24 +1,51 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
+import Image from "gatsby-image"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import Layout from "../components/layout"
 
-export default function postTemplate({ data: { mdx } }) {
+export default function postTemplate({ data }) {
+  const { title, date, author, image } = data.mdx.frontmatter
+  const { body } = data.mdx
+  const img = image.childImageSharp.fluid
+
   return (
-    <div>
-      <h1>{mdx.frontmatter.title}</h1>
-      <MDXRenderer>{mdx.body}</MDXRenderer>
-    </div>
+    <Layout>
+      <section>
+        <Link to="/">back to all posts</Link>
+        <div>
+          <h1>{title}</h1>
+          <h4>
+            <span>by {author}</span> / <span>{date}</span>
+          </h4>
+        </div>
+        <Image fluid={img} />
+        <div>
+          <MDXRenderer>{body}</MDXRenderer>
+        </div>
+      </section>
+    </Layout>
   )
 }
 
-export const pageQuery = graphql`
-  query BlogPostQuery($id: String) {
-    mdx(id: { eq: $id }) {
-      id
-      body
+export const query = graphql`
+  query getPost($slug: String!) {
+    mdx(frontmatter: { slug: { eq: $slug } }) {
       frontmatter {
         title
+        slug
+        date(formatString: "MMM Do, YYYY")
+        author
+        image {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
+      id
+      body
     }
   }
 `

@@ -18,13 +18,7 @@ module.exports = {
         path: `src/posts/`,
       },
     },
-    {
-      resolve: "gatsby-plugin-page-creator",
-      options: {
-        name: "posts",
-        path: `${__dirname}/src/posts`,
-      },
-    },
+
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,
