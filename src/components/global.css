@@ -1,0 +1,47 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  height: 100vh;
+}
+
+@import url("https://use.typekit.net/soh7wne.css");
+
+h1,
+h2 {
+  font-family: "neue-haas-unica", sans-serif !important;
+  font-weight: 700 !important;
+  font-style: normal;
+}
+
+h3,
+h4,
+h5,
+p,
+button {
+  font-family: "neue-haas-unica", sans-serif !important;
+  font-weight: 400 !important;
+  font-style: normal;
+}
+
+p.light {
+  font-family: "neue-haas-unica", sans-serif !important;
+  font-weight: 300 !important;
+  font-style: normal;
+}
+
+code {
+  color: black !important;
+  margin: 1rem;
+  background-color: lightgray;
+  display: inline-block;
+  padding: 1.5rem;
+  font-size: 1.125rem !important;
+  border-radius: 10px;
+}
+
+button {
+  border: 2px solid black;
+}
